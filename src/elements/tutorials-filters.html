@@ -10,6 +10,16 @@
 <dom-module id="tutorials-filters">
   <template>
     <style>
+      .span-total {
+        width: 100%;
+      }
+
+      @media only screen and (min-width: 769px) {
+        .span-total {
+          width: 135%;
+        }
+      }
+
       .filter-label {
         display: inline-block;
         float: left;
@@ -20,7 +30,7 @@
 
       .filters-wrapper {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         justify-content: space-between;
         margin-bottom: 1em;
       }
@@ -73,6 +83,12 @@
       }
 
       @media only screen and (min-width: 769px) {
+        .filters-wrapper-start {
+          display: flex;
+          flex-direction: row;
+          align-items: flex-start;
+        }
+
         .filter {
           flex-direction: row;
           margin: 1em 1em 1em 0;
@@ -88,6 +104,13 @@
       }
 
       @media only screen and (min-width: 769px) {
+        .filters-wrapper-end {
+          display: flex;
+          flex-direction: row;
+          align-items: flex-end;
+          justify-content: flex-end;
+        }
+
         .sort {
           flex-direction: row;
           align-self: flex-end;
@@ -146,28 +169,32 @@
 
     </style>
 
-    <div class="horizontal clearfix end">
+    <div class="horizontal clearfix end span-total">
       <div class="filters-wrapper">
-        <div class="filter">
-          <p class="filter-label">Filter results by:</p>
-          <paper-dropdown-menu class="custom-width" label="<topic>" no-label-float noink no-animations>
-            <paper-listbox id="categorySelect" class="custom-width dropdown-content" attr-for-selected="data-sort" selected="{{selectedCategory}}">
-              <template is="dom-repeat" items="[[_toArray(categoryOptions)]]">
-                <paper-item data-sort$="[[item.value]]">[[item.name]]</paper-item>
-              </template>
-            </paper-listbox>
-          </paper-dropdown-menu>
+        <div class="filters-wrapper-start">
+          <div class="filter">
+            <p class="filter-label">Filter results by:</p>
+            <paper-dropdown-menu class="custom-width" label="<topic>" no-label-float noink no-animations>
+              <paper-listbox id="categorySelect" class="custom-width dropdown-content" attr-for-selected="data-sort" selected="{{selectedCategory}}">
+                <template is="dom-repeat" items="[[_toArray(categoryOptions)]]">
+                  <paper-item data-sort$="[[item.value]]">[[item.name]]</paper-item>
+                </template>
+              </paper-listbox>
+            </paper-dropdown-menu>
+          </div>
         </div>
 
-        <div class="sort">
-          <p class="filter-label">Sort results by:</p>
-          <paper-dropdown-menu class="custom-width" no-label no-label-float noink no-animations>
-            <paper-listbox id="sortSelect" class="custom-width dropdown-content" attr-for-selected="data-sort" selected="{{selectedSort}}">
-              <template is="dom-repeat" items="[[_toArray(sortOptions)]]">
-                <paper-item data-sort$="[[item.value]]">[[item.name]]</paper-item>
-              </template>
-            </paper-listbox>
-          </paper-dropdown-menu>
+        <div class="filters-wrapper-end">
+          <div class="sort">
+            <p class="filter-label">Sort results by:</p>
+            <paper-dropdown-menu class="custom-width" no-label no-label-float noink no-animations>
+              <paper-listbox id="sortSelect" class="custom-width dropdown-content" attr-for-selected="data-sort" selected="{{selectedSort}}">
+                <template is="dom-repeat" items="[[_toArray(sortOptions)]]">
+                  <paper-item data-sort$="[[item.value]]">[[item.name]]</paper-item>
+                </template>
+              </paper-listbox>
+            </paper-dropdown-menu>
+          </div>
         </div>
       </div>
 

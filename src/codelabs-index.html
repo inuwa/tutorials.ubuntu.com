@@ -144,11 +144,21 @@
       }
 
       .content {
-        margin: 0 auto;
+        margin: 0 auto auto 188px;
         max-width: 980px;
         padding: 10px;
       }
+      
+      @media only screen and (max-width: 769px) {
+        .content {
+          margin: 0 auto;
+        }
+      }
 
+      .content h4 {
+        font-weight: 300;
+      }
+      
       .intro {
         box-sizing: border-box;
         clear: both;
@@ -239,6 +249,13 @@
           width: calc(33.3% - 20px);
         }
       }
+      
+      .featured-posts {
+        background: #f7f7f7 url('https://assets.ubuntu.com/v1/f8a323a7-image-background-paper.png') center top repeat-y;
+        border-bottom: 2px solid var(--color-mid-light);
+        border-top: 2px solid var(--color-mid-light);
+        width: 100%;
+      }
 
       .event-wrapper {
         background-color: white;
@@ -321,12 +338,9 @@
       }
     </style>
 
-    <app-route
-      route="{{route}}"
-      pattern="/:event"
-      data="{{routeData}}"></app-route>
+    <app-route route="{{route}}" pattern="/:event" data="{{routeData}}"></app-route>
 
-    <div class="layout vertical">
+    <div class="layout vertical" lang="en">
       <tutorials-app-header></tutorials-app-header>
       <div>
         <template is="dom-if" if="{{currentEvent.id}}">
@@ -336,85 +350,79 @@
               <h1>{{currentEvent.name}}</h1>
               <p>{{currentEvent.description}}</p>
             </div>
-          </div>
         </template>
+      </div>
+      <div class="content title">
+        <div class="intro">
+          <h1>Innovation. Education.</h1>
+          <p>Ubuntu Tutorials provide a step-by-step to doing development and devops activities on Ubuntu machines,
+            servers
+            or devices.</p>
+        </div>
+      </div>
+      <div class="featured-posts">
         <div class="content">
-          <div class="wrap intro">
-            <h1>Do more with Ubuntu!</h1>
-            <p>Ubuntu Tutorials are project-based, step-by-step guides to 
-              doing amazing things with Ubuntu. From installing the OS in 
-              the first place to packaging your first snap, we're here to
-              help you on your way.</p>
-            <p>This site is open source and open to contributions from the
-              Linux community, if you have a knack for writing and sharing
-              your knowledge, you can <a href="/tutorial/tutorial-guidelines">
-                read our guide</a> to get started.</p>
-            <p>If you'd like to see a tutorial written on a specific topic,
-              <a href='https://github.com/canonical-websites/tutorials.ubuntu.com/issues?q=is%3Aopen+is%3Aissue+label%3A"Type%3A+Tutorial+Request"' class="external">
-                let us know</a>.</p>
-
-            <div class="navbar-search">
-              <label class="accessibility-aid" for="edit-keys" hidden="hidden">Search</label>
-              <input id="edit-keys" type="search" placeholder="Search tutorials" is="iron-input" bind-value="{{filterSearch}}" class="navbar-search__input"/>
-              <paper-icon-button class="search" icon="search"></paper-icon-button>
-            </div>
-            <div class="heading-results">
-              <template is="dom-if" if="[[filterSearch]]">
-                <h2 class="heading-results__header">
-                  <span class="heading-results__highlight">[[searchResultCount]]</span> search results for <span class="heading-results__highlight">[[filterSearch]]</span>
-                </h2>
-              </template>
-            </div>
-            <div>
-              <tutorials-filters
-                selected-category="{{filterCategory}}"
-                selected-sort="{{filterSort}}"
-                selected-user="{{filterUser}}"
-                >
-              </tutorials-filters>
-            </div>
-          </div>
-
-          <div class="horizontal layout end">
-            <div class="flex"></div>
-          </div>
-          <div class="horizontal layout wrap">
-            <template is="dom-repeat" items="[[filteredTutorials]]" sort="[[_getSortFunction(filterSort)]]">
-              <codelabs-card heading="[[item.title]]" summary="[[item.summary]]" category="[[item.category]]"
-                            difficulty="[[item.difficulty]]" duration="[[item.duration}}" tags="[[item.tags]]"
-                            published="[[item.published]]" url="[[item.url]]"
-                            ></codelabs-card>
-            </template>
-            <template is="dom-if" if="[[isEmpty]]">
-              <div class="no-results">
-                <h2>Why not try widening your search?</h2>
-                <h3>You can do this by:</h3>
-                <ul>
-                  <li>Removing any filters</li>
-                  <li>Using individual words instead of phrases</li>
-                  <li>Trying a different spelling</li>
-                </ul>
-              </div>
-            </template>
+          <div>
+            <h4>Featured Posts</h4>
           </div>
         </div>
-        <footer class="footer">
-          <p>© 2018 Canonical Ltd. Ubuntu and Canonical are registered trademarks of Canonical Ltd.</p>
-          <nav class="footer__nav">
-            <ul class="footer__links">
-              <li class="footer__item">
-                <a class="footer__link" href="https://www.ubuntu.com/legal">Legal Information</a>
-              </li>
-              <li class="footer__item">
-                <a class="footer__link" href="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy">Cookie policy</a>
-              </li>
-              <li class="footer__item">
-                <a class="footer__link" href="https://github.com/canonical-websites/tutorials.ubuntu.com/issues/new">Report a bug on this site</a>
-              </li>
-            </ul>
-          </nav>
-        </footer>
       </div>
+      <div class="content">
+        <!-- <div>
+          <label class="accessibility-aid" for="edit-keys" hidden="hidden">Search</label>
+          <input id="edit-keys" type="search" placeholder="Search tutorials" is="iron-input" bind-value="{{filterSearch}}" />
+          <paper-icon-button class="search" icon="search"></paper-icon-button>
+          <template is="dom-if" if="[[filterSearch]]">
+            <h2 class="heading-results">
+              <span class="heading-results__highlight">[[searchResultCount]]</span> search results for <span class="heading-results__highlight">[[filterSearch]]</span>
+            </h2>
+          </template>
+        </div> -->
+        <div>
+          <tutorials-filters selected-category="{{filterCategory}}" selected-sort="{{filterSort}}" selected-user="{{filterUser}}">
+          </tutorials-filters>
+        </div>
+        <div class="horizontal layout end">
+          <div class="flex"></div>
+        </div>
+        <div class="horizontal layout wrap">
+          <template is="dom-repeat" items="[[filteredTutorials]]" sort="[[_getSortFunction(filterSort)]]">
+            <codelabs-card heading="[[item.title]]" summary="[[item.summary]]" category="[[item.category]]" difficulty="[[item.difficulty]]"
+              duration="[[item.duration}}" tags="[[item.tags]]" published="[[item.published]]" url="[[item.url]]"></codelabs-card>
+          </template>
+          <template is="dom-if" if="[[isEmpty]]">
+            <div class="no-results">
+              <h2>Why not try widening your search?</h2>
+              <h3>You can do this by:</h3>
+              <ul>
+                <li>Removing any filters</li>
+                <li>Using individual words instead of phrases</li>
+                <li>Trying a different spelling</li>
+              </ul>
+            </div>
+          </template>
+        </div>
+      </div>
+      <footer class="footer">
+        <p>© 2018 Canonical Ltd. Ubuntu and Canonical are registered trademarks of Canonical Ltd.</p>
+        <nav class="footer__nav">
+          <ul class="footer__links">
+            <li class="footer__item">
+              <a class="footer__link" href="https://www.ubuntu.com/legal">Legal Information</a>
+            </li>
+            <li class="footer__item">
+              <a class="footer__link" href="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy">Cookie
+                policy</a>
+            </li>
+            <li class="footer__item">
+              <a class="footer__link" href="https://github.com/canonical-websites/tutorials.ubuntu.com/issues/new">Report
+                a
+                bug on this site</a>
+            </li>
+          </ul>
+        </nav>
+      </footer>
+    </div>
     </div>
   </template>
 
@@ -488,53 +496,53 @@
         '_getFilteredTutorials(codelabs, searchKeywords, filterEvent, filterCategory, filterUser)', // eslint-disable-line
       ],
 
-      attached: function() {
+      attached: function () {
         this.updateMetadata();
       },
 
-      ready: function() {
+      ready: function () {
         if (this.route.__queryParams['q']) {
           this.filterSearch = this.route.__queryParams['q'];
         }
       },
 
-      updateMetadata: function() {
+      updateMetadata: function () {
         this.fire('app-metadata', {
           title: 'Ubuntu tutorials',
           description: `Ubuntu Tutorials are project-based, step-by-step guides to doing amazing things with Ubuntu. From installing the OS in the first place to packaging your first snap, we're here to help you on your way.`, // eslint-disable-line
         });
       },
 
-      _getSortFunction: function(sortOption) {
-        switch(sortOption) {
+      _getSortFunction: function (sortOption) {
+        switch (sortOption) {
           case 'published-asc':
-            return function(a, b) {
+            return function (a, b) {
               return (a.published > b.published ? 1 : -1);
             };
           case 'published-desc':
-            return function(a, b) {
+            return function (a, b) {
               return (a.published < b.published ? 1 : -1);
             };
           case 'duration-asc':
-            return function(a, b) {
+            return function (a, b) {
               return (a.duration > b.duration ? 1 : -1);
             };
           case 'duration-desc':
-            return function(a, b) {
+            return function (a, b) {
               return (a.duration < b.duration ? 1 : -1);
             };
           case 'difficulty-desc':
-            return function(a, b) {
+            return function (a, b) {
               return (a.difficulty < b.difficulty ? 1 : -1);
             };
           case 'difficulty-asc':
-            return function(a, b) {
+            return function (a, b) {
               return (a.difficulty > b.difficulty ? 1 : -1);
             };
         };
       },
 
-      _getFilteredTutorials: function(
+      _getFilteredTutorials: function (
         tutorials, searchKeywords, currentEvent, currentCategory, currentUser
       ) {
         if (tutorials === null) {
@@ -559,15 +567,15 @@
         return tutorials;
       },
 
-      _getSearchFilterFunction: function(searchKeywords) {
-        return function(item) {
+      _getSearchFilterFunction: function (searchKeywords) {
+        return function (item) {
           let title = item.title.toLowerCase();
           let summary = item.summary.toLowerCase();
           let category = item.category[0].toLowerCase();
           let tags = item.tags;
 
           let shouldShow = true;
-          searchKeywords.forEach(function(searchterm) {
+          searchKeywords.forEach(function (searchterm) {
             if (searchterm === '') {
               return;
             }
@@ -583,7 +591,7 @@
               return;
             }
 
-            tags.forEach(function(tag) {
+            tags.forEach(function (tag) {
               if (tag.toLowerCase().indexOf(searchterm) > -1) {
                 searchtermFound = true;
                 return;
@@ -595,8 +603,8 @@
         };
       },
 
-      _getFilterFunction: function(currentEvent, currentCategory, currentUser) {
-        return function(item) {
+      _getFilterFunction: function (currentEvent, currentCategory, currentUser) {
+        return function (item) {
           let category = item.category[0].toLowerCase();
           let tags = item.tags;
 
@@ -616,11 +624,11 @@
         };
       },
 
-      _isEmpty: function(results) {
+      _isEmpty: function (results) {
         return results.length <= 0;
       },
 
-      _eventChanged: function(eventID, eventsmap) {
+      _eventChanged: function (eventID, eventsmap) {
         // FIXME (if upstream solution)
         // as we data-bind "subroute", even when not active, the view in map
         // /codelabs/codelab_id -> codelab_id matches :events and
@@ -641,14 +649,14 @@
         return currentEvent;
       },
 
-      _searchKeywords: function(searchString) {
+      _searchKeywords: function (searchString) {
         if (searchString.length > 0) {
           return searchString.split(' ');
         }
         return [];
       },
 
-      _buildcategories: function(categoriesmap) {
+      _buildcategories: function (categoriesmap) {
         let newcategories = Object.keys(categoriesmap).sort();
         newcategories.unshift('All');
         let indexunknown = newcategories.indexOf('unknown');
