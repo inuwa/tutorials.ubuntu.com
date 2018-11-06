@@ -252,8 +252,8 @@
       
       .featured-posts {
         background: #f7f7f7 url('https://assets.ubuntu.com/v1/f8a323a7-image-background-paper.png') center top repeat-y;
-        border-bottom: 2px solid var(--color-mid-light);
-        border-top: 2px solid var(--color-mid-light);
+        border-bottom: 1px solid var(--color-mid-light);
+        border-top: 1px solid var(--color-mid-light);
         width: 100%;
       }
 
@@ -356,19 +356,17 @@
         <div class="intro">
           <h1>Innovation. Education.</h1>
           <p>Ubuntu Tutorials provide a step-by-step to doing development and devops activities on Ubuntu machines,
-            servers
-            or devices.</p>
+            servers or devices.
+          </p>
         </div>
       </div>
       <div class="featured-posts">
         <div class="content">
-          <div>
-            <h4>Featured Posts</h4>
-          </div>
+          <h4>Featured Posts</h4>
         </div>
       </div>
       <div class="content">
-        <!-- <div>
+        <!--<div>
           <label class="accessibility-aid" for="edit-keys" hidden="hidden">Search</label>
           <input id="edit-keys" type="search" placeholder="Search tutorials" is="iron-input" bind-value="{{filterSearch}}" />
           <paper-icon-button class="search" icon="search"></paper-icon-button>
@@ -377,8 +375,8 @@
               <span class="heading-results__highlight">[[searchResultCount]]</span> search results for <span class="heading-results__highlight">[[filterSearch]]</span>
             </h2>
           </template>
-        </div> -->
-        <div>
+        </div> 
+        <div> -->
           <tutorials-filters selected-category="{{filterCategory}}" selected-sort="{{filterSort}}" selected-user="{{filterUser}}">
           </tutorials-filters>
         </div>

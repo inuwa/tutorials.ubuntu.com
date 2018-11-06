@@ -28,13 +28,6 @@
         width: auto;
       }
 
-      .filters-wrapper {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        margin-bottom: 1em;
-      }
-
       paper-dropdown-menu {
         font-family: 'Ubuntu', Helvetica, Arial;
 
@@ -73,16 +66,28 @@
           width: 228px;
         }
       }
-
-      .filter {
+      
+      .filters-wrapper-start {
         display: flex;
-        flex-direction: column;
-        flex: 1 1 auto;
-        margin: 1em 0;
-        width: 100%;
+        flex-direction: row;
+        align-items: flex-start;
+      }
+      
+      .filters-wrapper-end {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: flex-end;
       }
 
-      @media only screen and (min-width: 769px) {
+      @media only screen and (min-width: 1025px) {
+        .filters-wrapper {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          margin-bottom: 1em;
+        }
+
         .filters-wrapper-start {
           display: flex;
           flex-direction: row;
@@ -93,17 +98,7 @@
           flex-direction: row;
           margin: 1em 1em 1em 0;
         }
-      }
 
-      .sort {
-        display: flex;
-        flex-direction: column;
-        flex: 1 1 auto;
-        margin: 1em 0;
-        width: 100%;
-      }
-
-      @media only screen and (min-width: 769px) {
         .filters-wrapper-end {
           display: flex;
           flex-direction: row;
@@ -118,6 +113,87 @@
           width: auto;
         }
       }
+
+      @media only screen and (min-width: 1366px) {
+        .filters-wrapper {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          margin-bottom: 1em;
+        }
+      }
+
+      @media only screen and (min-width: 769px) {
+        .filters-wrapper {
+          display: flex;
+          flex-direction: row;
+          margin-bottom: 1em;
+        }
+
+        .filters-wrapper-start {
+          display: flex;
+          flex-direction: row;
+          align-items: flex-start;
+        }
+
+        .filter {
+          flex-direction: row;
+          margin: 1em 1em 1em 0;
+        }
+
+        .filters-wrapper-end {
+          display: flex;
+          flex-direction: row;
+          align-items: flex-end;
+          justify-content: flex-end;
+        }
+
+        .sort {
+          flex-direction: row;
+          align-self: flex-end;
+          margin: 1em 0 1em 1em;
+          width: auto;
+        }
+      }
+
+      @media only screen and (max-width: 768px) {
+        .filters-wrapper {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          margin-bottom: 1em;
+        }
+        
+        .filters-wrapper-start {
+          display: flex;
+          flex-direction: column;
+          justify-content: stretch;
+          width: 100%;
+        }
+
+        .filter {
+          flex-direction: row;
+          margin: 1em 1em 1em 0;
+          width: 100%;
+        }
+        
+        .custom-width.tutorials-filters {
+          width: 100%;
+        }
+        
+        .filters-wrapper-end {
+          display: flex;
+          flex-direction: column;
+          justify-content: stretch;
+          width: 100%;
+        }
+
+        .sort {
+          flex-direction: row;
+          width: 100%;
+        }
+      }
+      
 
       paper-button.button--primary {
         background: white;
